@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="./css/style.css" />
+      <link rel="stylesheet" href="./css/new_style.css" />
+   </head>
+   <body>
+      <h1 class="title">Todo list danh sách sinh viên</h1>
+      <form action="">
+         <div class="form-group">
+            <label for="fullname" class="form-label">Tên đầy đủ:</label>
+            <input id="fullname" name="fullname" type="text" placeholder="" class="form-control" />
+         </div>
+         <div class="form-group">
+            <label for="age" class="form-label">Tuổi: </label>
+            <input id="age" name="age" type="number" placeholder="" class="form-control" />
+         </div>
+         <div class="form-group">
+            <label for="email" class="form-label">Email: </label>
+            <input id="email" name="email" type="email" placeholder="" class="form-control" />
+         </div>
+         <div class="form-group">
+            <label for="phone" class="form-label">Số điện thoại: </label>
+            <input id="phone" name="phone" type="tel" placeholder="" class="form-control" />
+         </div>
+         <div class="form-group">
+            <label for="score" class="form-label">Điểm trung bình: </label>
+            <input id="score" name="score" type="number" placeholder="" class="form-control" />
+         </div>
+         <button type="submit" class="addBtn" id="addBtn">Thêm học sinh</button>
+      </form>
+
+      <div class="show-list">
+         <h2 class="show-list-title">Danh sách sinh viên</h2>
+         <div class="search">
+            <input type="text" id="search" placeholder="Tìm kiếm..." />
+            <button type="button" class="searchBtn" id="searchBtn">Tìm kiếm</button>
+         </div>
+         <table id="table">
+            <thead>
+               <tr>
+                  <th>Tên</th>
+                  <th>Tuổi</th>
+                  <th>Điểm trung bình</th>
+                  <th>Số điện thoại</th>
+                  <th>Email</th>
+               </tr>
+            </thead>
+            <ul id="todoList"></ul>
+         </table>
+      </div>
+      <script src="script.js"></script>
+   </body>
+</html>

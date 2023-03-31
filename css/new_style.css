@@ -1,0 +1,99 @@
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   box-sizing: border-box;
+   font-family: sans-serif;
+}
+.title {
+   text-align: center;
+   font-size: 25px;
+   margin: 20px 0;
+   color: rgb(64, 98, 127);
+}
+
+.form-group {
+   margin: 15px 30px;
+}
+
+.addBtn {
+   width: 129px;
+   height: 48px;
+   left: 1416px;
+   top: 7479px;
+   margin: 15px 30px;
+
+   color: #fff;
+   cursor: pointer;
+   background: #8599d9;
+   border-radius: 5px;
+}
+
+/* .form-group input {
+   width: 100px;
+   float: left;
+} */
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='tel'] {
+   padding: 8px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+
+.show-list-title {
+   text-align: center;
+   font-size: 25px;
+   margin: 20px 0;
+   color: rgb(64, 98, 127);
+}
+
+.search {
+   margin: 30px;
+}
+
+.searchBtn {
+   padding: 8px 15px;
+   background-color: #8599d9;
+   border-radius: 5px;
+   color: #fff;
+   margin-left: 5px;
+}
+
+form {
+   margin-bottom: 20px;
+   border-width: 1px;
+   border-style: solid;
+   border-color: rgb(204, 204, 204);
+   border-image: initial;
+   padding: 10px;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+}
+
+th,
+td {
+   padding: 8px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+}
+
+th {
+   background-color: #8599d9;
+   color: white;
+   text-align: center;
+}
+
+td:last-child {
+   text-align: center;
+}
+
+.error {
+   color: red;
+}
