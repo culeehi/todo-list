@@ -64,9 +64,16 @@ function addStudent() {
    }
 
    //thêm mới một sinh viên vào mảng
-   if (fullName && age && score && phone && email) {
-      let students = sessionStorage.getItem('students') ? JSON.parse(sessionStorage.getItem('students')) : [];
-      // let students = [];
+   const fullNameError = document.querySelector('#fullname-error').textContent;
+   const ageError = document.querySelector('#age-error').textContent;
+   const scoreError = document.querySelector('#score-error').textContent;
+   const phoneError = document.querySelector('#phone-error').textContent;
+   const emailError = document.querySelector('#email-error').textContent;
+
+   // console.log(phoneError, 'phoneError');
+   if (!fullNameError && !ageError && !scoreError && !emailError && !phoneError) {
+      let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+
       students.push({
          fullName: fullName,
          age: age,
@@ -74,13 +81,15 @@ function addStudent() {
          phone: phone,
          email: email,
       });
-      sessionStorage.setItem('students', JSON.stringify(students));
+      localStorage.setItem('students', JSON.stringify(students));
       showListStudent();
+      localStorage;
    }
 }
 
 function showListStudent() {
-   let students = sessionStorage.getItem('students') ? JSON.parse(sessionStorage.getItem('students')) : [];
+   let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+   // console.log(students);
    if (students.length === 0) {
       document.getElementById('list-student').style.display = 'none';
       return false;
@@ -111,7 +120,7 @@ function showListStudent() {
             <td>${students.phone}</td>
             <td>${students.email}</td>
             <td>
-            <a href='#'>Sửa</a> |
+            <a href='#'  onclick ="editStudent(${studentId})">Sửa</a> |
             <a href='#' onclick ="deleteStudent(${studentId})">Xóa</a>
             </td>
       </tr>
@@ -122,18 +131,58 @@ function showListStudent() {
 }
 
 function deleteStudent(id) {
-   let students = sessionStorage.getItem('students') ? JSON.parse(sessionStorage.getItem('students')) : [];
+   let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
    students.splice(id, 1);
-   sessionStorage.setItem('students', JSON.stringify(students));
+   localStorage.setItem('students', JSON.stringify(students));
    showListStudent();
 }
 
+function editStudent() {
+   let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+}
+
 function searchUser() {
-   // let valueSearchInput = document.querySelector('#search').value;
-   // let students = sessionStorage.getItem('students') ? JSON.parse(sessionStorage.getItem('students')) : [];
-   // let userSearch = students.filter((students) => {
-   //    return students.fullName.toUpperCase(valueSearchInput.toUpperCase());
-   // });
-   // console.log(userSearch);
-   // showListStudent();
+   let valueSearchInput = document.querySelector('#search').value;
+   let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+   let userSearch = students.filter((value) => {
+      return (
+         value.fullName.toUpperCase().includes(valueSearchInput.toUpperCase()) ||
+         value.phone.toUpperCase().includes(valueSearchInput.toUpperCase()) ||
+         value.email.toUpperCase().includes(valueSearchInput.toUpperCase())
+      );
+   });
+   console.log(userSearch);
+   localStorage.setItem('students', JSON.stringify(students));
+
+   let tabContent = `
+   <tr>
+         <td>STT</td>
+         <td>Tên</td>
+         <td>Tuổi</td>
+         <td>Điểm trung bình</td>
+         <td>Số điện thoại</td>
+         <td>Email</td>
+         <td>Action</td>
+   </tr>
+   `;
+
+   userSearch.forEach((students, index) => {
+      let studentId = index;
+      index++;
+      tabContent += `
+   <tr>
+      <td>${index}</td>
+      <td>${students.fullName}</td>
+      <td>${students.age}</td>
+      <td>${students.score}</td>
+      <td>${students.phone}</td>
+      <td>${students.email}</td>
+      <td>
+      <a href='#'>Sửa</a> |
+      <a href='#' onclick ="deleteStudent(${studentId})">Xóa</a>
+      </td>
+</tr>
+   `;
+   });
+   document.getElementById('view-table').innerHTML = tabContent;
 }
