@@ -1,5 +1,8 @@
-const addButton = document.querySelector('#addBtn');
-addButton.addEventListener('click', addStudent);
+const addBtn = document.querySelector('#addBtn');
+addBtn.addEventListener('click', addStudent);
+
+const updateBtn = document.querySelector('#updateBtn');
+updateBtn.addEventListener('click', changeStudent);
 
 function emailIsValid(email) {
    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -11,7 +14,6 @@ function addStudent() {
    const score = document.querySelector('#score').value;
    const phone = document.querySelector('#phone').value;
    const email = document.querySelector('#email').value;
-
    // validate tên
    if (_.isEmpty(fullName)) {
       document.getElementById('fullname-error').innerHTML = 'không được để trống';
@@ -83,8 +85,9 @@ function addStudent() {
       });
       localStorage.setItem('students', JSON.stringify(students));
       showListStudent();
-      localStorage;
+      resetInput();
    }
+   alert('Đã thêm sinh viên vào mảng');
 }
 
 function showListStudent() {
@@ -130,15 +133,53 @@ function showListStudent() {
    }
 }
 
-function deleteStudent(id) {
+function deleteStudent(index) {
    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
-   students.splice(id, 1);
+   students.splice(index, 1);
    localStorage.setItem('students', JSON.stringify(students));
    showListStudent();
 }
 
-function editStudent() {
+function editStudent(index) {
    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+
+   document.getElementById('fullname').value = students[index].fullName;
+   document.getElementById('age').value = students[index].age;
+   document.getElementById('score').value = students[index].score;
+   document.getElementById('phone').value = students[index].phone;
+   document.getElementById('email').value = students[index].email;
+   document.getElementById('index').value = index;
+
+   document.getElementById('addBtn').style.display = ' none';
+   document.getElementById('updateBtn').style.display = ' block';
+}
+
+function changeStudent() {
+   let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+   let index = document.getElementById('index').value;
+
+   students[index] = {
+      fullName: document.getElementById('fullname').value,
+      age: document.getElementById('age').value,
+      score: document.getElementById('score').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+   };
+   localStorage.setItem('students', JSON.stringify(students));
+   showListStudent();
+   resetInput();
+
+   document.getElementById('addBtn').style.display = ' block';
+   document.getElementById('updateBtn').style.display = 'none';
+   alert('Update thành công');
+}
+
+function resetInput() {
+   document.getElementById('fullname').value = '';
+   document.getElementById('age').value = '';
+   document.getElementById('score').value = '';
+   document.getElementById('phone').value = '';
+   document.getElementById('email').value = '';
 }
 
 function searchUser() {

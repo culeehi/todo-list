@@ -17,13 +17,11 @@
             <input id="fullname" name="fullname" type="text" placeholder="" class="form-control" />
             <span id="fullname-error" class="error"></span>
          </div>
-
          <div class="form-group">
             <label for="age" class="form-label">Tuổi sinh viên: </label>
             <input id="age" name="age" type="number" placeholder="" class="form-control" />
             <span id="age-error" class="error"></span>
          </div>
-
          <div class="form-group">
             <label for="score" class="form-label">Điểm trung bình: </label>
             <input id="score" name="score" type="number" placeholder="" class="form-control" />
@@ -39,7 +37,13 @@
             <input id="email" name="email" type="email" placeholder="" class="form-control" />
             <span id="email-error" class="error"></span>
          </div>
-         <button type="submit" class="addBtn" id="addBtn">Thêm học sinh</button>
+         <div class="form-group">
+            <input id="index" type="hidden" />
+         </div>
+         <div class="form-button">
+            <button type="submit" class="addBtn" id="addBtn">Thêm sinh viên</button>
+            <button type="submit" class="updateBtn" id="updateBtn">Update</button>
+         </div>
       </div>
 
       <div class="show-list" id="list-student">

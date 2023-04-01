@@ -31,10 +31,20 @@
    border-radius: 5px;
 }
 
-/* .form-group input {
-   width: 100px;
-   float: left;
-} */
+.updateBtn {
+   width: 129px;
+   height: 48px;
+   left: 1416px;
+   top: 7479px;
+   margin: 15px 30px;
+
+   color: #fff;
+   cursor: pointer;
+   background: #8599d9;
+   border-radius: 5px;
+
+   display: none;
+}
 
 input[type='text'],
 input[type='number'],
