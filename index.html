@@ -8,10 +8,11 @@
       <link rel="stylesheet" href="./css/style.css" />
       <link rel="stylesheet" href="./css/new_style.css" />
    </head>
-   <body onload="showListStudent()">
+
+   <body>
       <h1 class="title">Todo list danh sách sinh viên</h1>
 
-      <div class="import-info">
+      <form>
          <div class="form-group">
             <label for="fullname" class="form-label">Tên sinh viên:</label>
             <input id="fullname" name="fullname" type="text" placeholder="" class="form-control" />
@@ -44,12 +45,12 @@
             <button type="submit" class="addBtn" id="addBtn">Thêm sinh viên</button>
             <button type="submit" class="updateBtn" id="updateBtn">Update</button>
          </div>
-      </div>
+      </form>
 
       <div class="show-list" id="list-student">
          <h2 class="show-list-title">Danh sách sinh viên</h2>
          <div class="search">
-            <input type="text" id="search" oninput="searchUser()" placeholder="Nhập: tên, sdt, email" />
+            <input type="text" id="search" placeholder="Nhập: tên, sdt, email" />
          </div>
          <table id="view-table"></table>
       </div>

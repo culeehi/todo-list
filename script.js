@@ -4,6 +4,12 @@ addBtn.addEventListener('click', addStudent);
 const updateBtn = document.querySelector('#updateBtn');
 updateBtn.addEventListener('click', changeStudent);
 
+const search = document.querySelector('#search');
+search.addEventListener('input', searchUser);
+
+window.onload = function () {
+   showListStudent();
+};
 function emailIsValid(email) {
    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -92,7 +98,7 @@ function addStudent() {
 
 function showListStudent() {
    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
-   // console.log(students);
+
    if (students.length === 0) {
       document.getElementById('list-student').style.display = 'none';
       return false;
@@ -129,6 +135,7 @@ function showListStudent() {
       </tr>
          `;
       });
+
       document.getElementById('view-table').innerHTML = tabContent;
    }
 }
